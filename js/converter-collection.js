@@ -17,7 +17,7 @@ var ConverterCollection = function(defaults){
     that.converters = [];
 
     // default conversions
-    that.defaults = [
+    that.defaults = defaults || [
         {from: {unit: 'pint', measure: 1}, to: {unit: 'ml'}},
         {from: {unit: 'gr', measure: 100}, to: {unit: 'oz'}},
         {from: {unit: 'tbsp', measure: 1}, to: {unit: 'ml'}},
