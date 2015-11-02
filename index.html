@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title id="page-title">AJ Converter for Adestra</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0,
+    user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+
+  <link href="https://www.google.com/fonts#ChoosePlace:select/Collection:Work+Sans:400,100" rel="stylesheet">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">  
+  <link rel="stylesheet" href="css/font-awesome.min.css" media="screen">
+  <link rel="stylesheet" href="css/main.css" media="screen">
+  
+</head>
+
+<body>
+  <div id="main" role="main" >
+
+    <!-- A converter. We create one of these per converter. -->
+    <section class="row" rv-each-converter="converters" rv-data-id="converter.id">
+      <form class="form-inline">
+        <!-- left hand side of equation -->
+        <fieldset class="converterLeft col-md-5">
+            <div class="row">
+              <input max="99999" type="number" class="converterInput col-xs-6" data-side="left" 
+                rv-value="converter.last.left.measure|measurement">
+              <button type="button" class="converterUnitSelector btn btn-danger col-xs-6" 
+                data-toggle="modal" data-target="#unitsModal" data-side="left">
+                    <i class="fa fa-balance-scale" rv-if="converter.last.left.unit|isWeight"></i>
+                    <i class="fa fa-arrows-h" rv-if="converter.last.left.unit|isLength"></i>
+                    <i class="fa fa-glass" rv-if="converter.last.left.unit|isVolume"></i>                  
+                    { converter.last.left.unit }
+                    <i class="fa fa-ellipsis-h"></i>
+                </button>
+            </div>
+        </fieldset>
+        
+        <!-- equal sign -->
+        <span class="equal col-md-2">=</span>
+
+        <!-- right hand side -->
+        <fieldset class="converterRight col-md-5">
+            <div class="row">
+              <input max="99999" type="number" class="converterInput col-xs-6" data-side="right"
+                rv-value="converter.last.right.measure|measurement">
+              <button type="button" class="converterUnitSelector btn btn-danger col-xs-6" 
+                data-toggle="modal" data-target="#unitsModal" data-side="right">
+                  <i class="fa fa-balance-scale" rv-if="converter.last.right.unit|isWeight"></i>
+                  <i class="fa fa-arrows-h" rv-if="converter.last.right.unit|isLength"></i>
+                  <i class="fa fa-glass" rv-if="converter.last.right.unit|isVolume"></i>                  
+                  { converter.last.right.unit }
+                  <i class="fa fa-ellipsis-h"></i>
+              </button>
+            </div>
+        </fieldset>
+      </form>
+    </section>  
+    <!-- end of converter -->
+
+    <!-- reset and new converter buttons -->
+    <div class="row text-center">
+      <button id="reset" class="btn btn-default" type="reset">Reset</button>
+      <button id="addConverter" class="btn btn-default" type="button">New</button>
+    </div>
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="unitsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+          <div rv-each-ut="unitTypes" class="UnitType" >
+            <h4 rv-text="ut.name"></h4>
+            <div class="" rv-each-u="ut.values" rv-class="ut.name">
+                <button type="button" class="btn btn-default btn-block btn-unit">{ u }</button>
+            </div>
+          </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="js/rivets.js"></script>
+  <script src="js/lodash.js"></script>
+  <script src="js/converter.js"></script>
+  <script src="js/converter-collection.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
