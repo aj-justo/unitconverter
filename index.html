@@ -25,7 +25,7 @@
         <fieldset class="converterLeft col-md-5">
             <div class="row">
               <input max="99999" type="number" class="converterInput col-xs-6" data-side="left" 
-                rv-value="converter.last.left.measure|measurement">
+                rv-value="converter.last.left.measurement|measurement">
               <button type="button" class="converterUnitSelector btn btn-danger col-xs-6" 
                 data-toggle="modal" data-target="#unitsModal" data-side="left">
                     <i class="fa fa-balance-scale" rv-if="converter.last.left.unit|isWeight"></i>
@@ -44,7 +44,7 @@
         <fieldset class="converterRight col-md-5">
             <div class="row">
               <input max="99999" type="number" class="converterInput col-xs-6" data-side="right"
-                rv-value="converter.last.right.measure|measurement">
+                rv-value="converter.last.right.measurement|measurement">
               <button type="button" class="converterUnitSelector btn btn-danger col-xs-6" 
                 data-toggle="modal" data-target="#unitsModal" data-side="right">
                   <i class="fa fa-balance-scale" rv-if="converter.last.right.unit|isWeight"></i>
@@ -86,10 +86,10 @@
     </div>
   </div>
 
-  <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-  <script src="js/rivets.js"></script>
-  <script src="js/lodash.js"></script>
+  <script src="lib/jquery-1.11.3.min.js"></script>
+  <script src="lib/bootstrap.min.js"></script>
+  <script src="lib/rivets.js"></script>
+  <script src="lib/lodash.js"></script>
   <script src="js/converter.js"></script>
   <script src="js/converter-collection.js"></script>
   <script src="js/app.js"></script>

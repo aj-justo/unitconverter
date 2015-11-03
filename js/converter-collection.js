@@ -3,7 +3,7 @@
 /**
  * Manage a collection of Converter instances.
  * @param defaults: optional, Array of conversion hashes, in the format:
- *     {from: {unit: 'gr', measure: 1}, to: {unit: 'oz'}}
+ *     {from: {unit: 'gr', measurement: 1}, to: {unit: 'oz'}}
  **/ 
 var ConverterCollection = function(defaults){
     // in case this is called without "new"
@@ -18,16 +18,16 @@ var ConverterCollection = function(defaults){
 
     // default conversions
     that.defaults = defaults || [
-        {from: {unit: 'pint', measure: 1}, to: {unit: 'ml'}},
-        {from: {unit: 'gr', measure: 100}, to: {unit: 'oz'}},
-        {from: {unit: 'tbsp', measure: 1}, to: {unit: 'ml'}},
-        {from: {unit: 'inch', measure: 2}, to: {unit: 'cm'}}
+        {from: {unit: 'pint', measurement: 1}, to: {unit: 'ml'}},
+        {from: {unit: 'gr', measurement: 100}, to: {unit: 'oz'}},
+        {from: {unit: 'tbsp', measurement: 1}, to: {unit: 'ml'}},
+        {from: {unit: 'inch', measurement: 2}, to: {unit: 'cm'}}
     ];
 
     // create default converters
     _.forEach(that.defaults, function(d){
         var c = new Converter();
-        c.convert(d.from.unit, d.from.measure, d.to.unit);
+        c.convert(d.from.unit, d.from.measurement, d.to.unit);
         that.convertersIndex[c.id] = c; 
     });
     // also store converters in a simple array that helps when binding to DOM elements
@@ -40,7 +40,7 @@ ConverterCollection.prototype = {
         var c = new Converter();
         // TODO: have more useful defaults instead of repeating first one
         var d = this.defaults[0];
-        c.convert(d.from.unit, d.from.measure, d.to.unit);
+        c.convert(d.from.unit, d.from.measurement, d.to.unit);
         this.converters.push(c);
         this.convertersIndex[c.id] = c;
     }

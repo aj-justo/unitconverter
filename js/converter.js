@@ -15,11 +15,11 @@ var Converter = function(){
     this.last = {
         left: {
             unit: '',
-            measure: 0,
+            measurement: 0,
         },
         right: {
             unit: '',
-            measure: 0
+            measurement: 0
         }
     };
 };
@@ -52,9 +52,9 @@ Converter.prototype = {
     },
 
     /**
-    * Convert a measure in one unit to a measure in another unit.
+    * Convert a measurement in one unit to a measurement in another unit.
     **/
-    convert: function(unit1, measure1, unit2, measure2){
+    convert: function(unit1, measurement1, unit2, measurement2){
         var that = this;
 
         // get a list of types of units (length, weight, volume, etc)
@@ -63,11 +63,11 @@ Converter.prototype = {
         };
 
         // shortcut method
-        var _setLast = function(unit1, measure1, unit2, measure2){
+        var _setLast = function(unit1, measurement1, unit2, measurement2){
             that.last.left.unit = unit1;
-            that.last.left.measure = measure1;
+            that.last.left.measurement = measurement1;
             that.last.right.unit = unit2;
-            that.last.right.measure = measure2;
+            that.last.right.measurement = measurement2;
         };
 
         // see to which unit type the unit corresponds (length/weight/volume)
@@ -80,15 +80,15 @@ Converter.prototype = {
                 if(!_.includes(units, unit2)){  // if unit2 different type, change it
                     unit2 = units[0];
                 }
-                if(!measure1){
-                    base = measure2 * that.units[s][unit2];     
-                    result = measure1 = base / that.units[s][unit1];
+                if(!measurement1){
+                    base = measurement2 * that.units[s][unit2];     
+                    result = measurement1 = base / that.units[s][unit1];
                 } else{
-                    base = measure1 * that.units[s][unit1];
-                    result = measure2 = base / that.units[s][unit2];
+                    base = measurement1 * that.units[s][unit1];
+                    result = measurement2 = base / that.units[s][unit2];
                 }
                 // keep a record of last conversion
-                _setLast(unit1, measure1, unit2, measure2);
+                _setLast(unit1, measurement1, unit2, measurement2);
                 return false; // end the iteration
             };    
         });
@@ -104,7 +104,7 @@ Converter.prototype = {
             var type = Converter.getUnitType(this.last.left.unit);
             this.last.right.unit = Converter.getUnits()[type][0];
         }
-        return this.convert(this.last.left.unit, this.last.left.measure, this.last.right.unit, null);
+        return this.convert(this.last.left.unit, this.last.left.measurement, this.last.right.unit, null);
     },
 
     /**
@@ -116,7 +116,7 @@ Converter.prototype = {
             var type = Converter.getUnitType(this.last.right.unit);
             this.last.left.unit = Converter.getUnits()[type][0];
         }
-        return this.convert(this.last.left.unit, null, this.last.right.unit, this.last.right.measure);
+        return this.convert(this.last.left.unit, null, this.last.right.unit, this.last.right.measurement);
     }
 };
 

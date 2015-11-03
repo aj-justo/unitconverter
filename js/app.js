@@ -50,7 +50,7 @@
             var converterId = $modal.data('converterId');
             var side = $modal.data('side');
             // TODO: use methods instead of accessing members, 
-            // like: getConverter(id), setLast(side, unit, measure)
+            // like: getConverter(id), setLast(side, unit, measurement)
             cc.convertersIndex[converterId].last[side].unit = $(this).text();
             if(side === 'left'){
                 cc.convertersIndex[converterId].convertLeftFromLast();
