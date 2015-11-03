@@ -1,0 +1,31 @@
+{
+  "name": "unitconverter",
+  "version": "1.0.0",
+  "description": "A unit converter for cooks",
+  "main": "my.conf.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "karma-chrome-launcher": "^0.2.1",
+    "karma-jasmine": "^0.3.6",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.15"
+  },
+  "devDependencies": {
+    "karma": "^0.13.15"
+  },
+  "scripts": {
+    "test": "karma start my.conf.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ajweb/unitconverter.git"
+  },
+  "author": "AJ Justo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ajweb/unitconverter/issues"
+  },
+  "homepage": "https://github.com/ajweb/unitconverter"
+}
