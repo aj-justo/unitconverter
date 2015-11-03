@@ -1,0 +1,1 @@
+// TODO add tests to check the UI has expected elements and behaves correctly to events
